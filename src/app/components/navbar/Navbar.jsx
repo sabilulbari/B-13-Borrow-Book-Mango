@@ -27,14 +27,18 @@ const Navbar = () => {
               {link}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-2xl font-semibold text-white">Digital Book</a>
+          <Link href={"/"} className="cursor-pointer normal-case text-2xl font-semibold text-white">
+            Digital Book
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-white">{link}</ul>
         </div>
         <div className="navbar-end">
-          <Link href={"/login"} className="btn btn-sm btn-outline btn-white px-6 py-2 font-semibold text-white border-white/30 hover:bg-white/10">
-            Login
+          <Link href="/login">
+            <button className="px-8 py-2 cursor-pointer rounded-2xl bg-linear-to-r from-purple-500 to-violet-600 text-white font-semibold text-md shadow-md hover:scale-105 transition">
+              Login
+            </button>
           </Link>
         </div>
       </div>

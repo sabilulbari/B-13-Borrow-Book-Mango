@@ -11,7 +11,7 @@ const Banner = () => {
           <span className="inline-block rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm uppercase tracking-[0.25em] text-slate-200">
             Discover. Borrow. Enjoy.
           </span>
-          <h1 className="text-5xl font-bold leading-tight tracking-tight sm:text-6xl">Find Your Next Favorite Read with Ease</h1>
+          <h1 className="text-5xl font-bold leading-tight tracking-tight sm:text-6xl">Find Your Next Read</h1>
           <p className="max-w-xl text-lg text-slate-200/90">
             Explore a modern digital library built for readers who value speed, simplicity, and a premium browsing experience. Discover curated collections, smart search, and
             instant borrowing from one elegant platform.
@@ -20,11 +20,6 @@ const Banner = () => {
             <Link href="/allBooks">
               <button className="rounded-3xl bg-linear-to-r from-violet-500 to-indigo-500 px-8 py-4 text-lg font-semibold text-white shadow-xl shadow-violet-500/30 transition hover:-translate-y-0.5 hover:shadow-violet-500/40">
                 Browse Books
-              </button>
-            </Link>
-            <Link href="/allBooks">
-              <button className="rounded-3xl border border-white/25 bg-white/10 px-8 py-4 text-lg font-medium text-white/90 transition hover:bg-white/15">
-                Explore Categories
               </button>
             </Link>
           </div>
