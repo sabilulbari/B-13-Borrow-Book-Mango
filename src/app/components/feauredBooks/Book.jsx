@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { FaStar } from 'react-icons/fa6';
 
 const Book = ({ book }) => {
-  const { image_url, title, category, author } = book;
+  const { image_url, title, category, author, id } = book;
   return (
     <div>
       <div className="card bg-base-100 shadow-sm p-4 work-sans border border-gray-300">
@@ -16,10 +15,10 @@ const Book = ({ book }) => {
           <p className="font-medium">By : {author}</p>
           <div
             className="flex items-center justify-between
-         border-t-2 border-dashed border-[#8d8a8a] pt-4  "
+         border-t-2 border-dashed border-[#8d8a8a] pt-4 "
           >
             <div className="font-medium text-[14px]">Category: {category}</div>
-            <Link className='btn btn-error' href={'/bookDetails'}>View Details</Link>
+            <Link className='btn btn-error' href={`/bookDetails/${id}`}>View Details</Link>
           </div>
         </div>
       </div>
