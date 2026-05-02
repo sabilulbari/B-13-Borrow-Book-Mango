@@ -2,12 +2,22 @@ import React from "react";
 import { BooksData } from "../../../../lib/data";
 import Image from "next/image";
 import Link from "next/link";
+import { Label, SearchField } from "@heroui/react";
 
 const allBooks = async () => {
   const allBook = await BooksData();
   return (
-    <div className="py-10 w-[90%] mx-auto space-y-5" >
+    <div className="py-10 w-[90%] mx-auto space-y-5">
       <h2 className="text-center font-bold text-4xl">All books are here!</h2>
+      <div className="w-[50%] mx-auto space-y-4">
+        <SearchField fullWidth name="search">
+          <SearchField.Group className="border border-blue-500">
+            <SearchField.SearchIcon />
+            <SearchField.Input placeholder="Search by title..." />
+            <SearchField.ClearButton />
+          </SearchField.Group>
+        </SearchField>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {allBook.map((b) => (
           <div key={b.id} className="card bg-base-100 shadow-sm p-4 work-sans border border-gray-300">
