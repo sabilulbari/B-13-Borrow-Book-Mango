@@ -1,11 +1,16 @@
-import React from "react";
+'use client'
+import React, { useState, useEffect } from "react";
 import { BooksData } from "../../../../lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import { Label, SearchField } from "@heroui/react";
 
-const allBooks = async () => {
-  const allBook = await BooksData();
+const AllBooks = () => {
+  const [allBook, setAllBook] = useState([]);
+  const [search, setSearch] = useState('');
+  useEffect(() => {
+    BooksData().then(setAllBook);
+  }, []);
   return (
     <div className="py-10 w-[90%] mx-auto space-y-5">
       <h2 className="text-center font-bold text-4xl">All books are here!</h2>
@@ -13,13 +18,13 @@ const allBooks = async () => {
         <SearchField fullWidth name="search">
           <SearchField.Group className="border border-blue-500">
             <SearchField.SearchIcon />
-            <SearchField.Input placeholder="Search by title..." />
+            <SearchField.Input onChange={(e)=> setSearch(e.target.value)} placeholder="Search by title..." />
             <SearchField.ClearButton />
           </SearchField.Group>
         </SearchField>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {allBook.map((b) => (
+        {allBook.filter(b => b.title.toLowerCase().includes(search.toLowerCase())).map((b) => (
           <div key={b.id} className="card bg-base-100 shadow-sm p-4 work-sans border border-gray-300">
             <div className="bg-base-200 flex items-center rounded-xl justify-center p-4">
               <Image className="h-50 rounded-lg" src={b.image_url} width={200} height={200} alt="Shoes" />
@@ -44,4 +49,4 @@ const allBooks = async () => {
   );
 };
 
-export default allBooks;
+export default AllBooks;
