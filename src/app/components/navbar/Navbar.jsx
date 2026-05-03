@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import Navlink from "./Navlink";
 import { authClient, useSession } from "../../../../lib/auth-client";
 import Image from "next/image";
 
-const Navbar = () => {
+const Navbar =  () => {
   const { data: session } = authClient.useSession();
 
   const img = session?.user?.image;
@@ -46,7 +46,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end gap-4">
           <div className="flex gap-4 items-center">
-            {session?.user && <p className="text-white">Hellow! {session?.user?.name}</p>}
+            {session?.user && <p className="text-white">Hellow! {name}</p>}
 
             <Image
               className="w-10 h-10 rounded-full overflow-hidden"
@@ -58,7 +58,7 @@ const Navbar = () => {
           </div>
           {session?.user ? (
             <Link href="/login">
-              <button className="px-8 py-2 cursor-pointer rounded-2xl bg-linear-to-r from-purple-500 to-violet-600 text-white font-semibold text-md shadow-md hover:scale-105 transition">
+              <button className="px-8 py-2 cursor-pointer rounded-2xl bg-linear-to-r from-purple-500 to-violet-600 text-white font-semibold text-md shadow-md hover:scale-105 transition" onClick={ async ()=> await authClient.signOut()}>
                 Logout
               </button>
             </Link>

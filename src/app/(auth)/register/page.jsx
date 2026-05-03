@@ -1,24 +1,32 @@
 "use client";
-import React from "react";
-import { Check } from "@gravity-ui/icons";
-import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
-import { FaGoogle } from "react-icons/fa6";
+import React, { useState } from "react";
+import { Check, Eye, EyeSlash } from "@gravity-ui/icons";
+import { Button, Description, FieldError, Form, Input, InputGroup, Label, TextField } from "@heroui/react";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { authClient } from "../../../../lib/auth-client";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Register = () => {
-    const {register, handleSubmit} = useForm()
+  const router = useRouter();
+  const [isVisible, setIsVisible] = useState();
+  const { register, handleSubmit } = useForm();
   const onSubmit = async (e) => {
     const { data, error } = await authClient.signUp.email({
       name: e.name,
       email: e.email,
       image: e.image_url,
       password: e.password,
+      autoSignIn: false,
     });
-    console.log(data, error, "register");
-    
+    if (error) {
+      toast.error(error.message);
+    } else {
+      toast.success(`${data?.user?.name} "Successfully accout registared"`);
+      router.push("/login");
+    }
   };
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950/80">
@@ -78,7 +86,7 @@ const Register = () => {
               <FieldError />
             </TextField>
             {/* Password */}
-            <TextField
+            {/* <TextField
               isRequired
               minLength={8}
               name="password"
@@ -100,6 +108,17 @@ const Register = () => {
               <Input placeholder="Enter your password" className="p-3 " {...register("password")} />
               <Description className="text-green-600">Must be at least 8 characters with 1 uppercase and 1 number</Description>
               <FieldError />
+            </TextField> */}
+            <TextField className="w-full" name="password">
+              <Label className="text-white">Password</Label>
+              <InputGroup>
+                <InputGroup.Input placeholder="Enter your password" className="w-full p-3" {...register("password")} type={isVisible ? "text" : "password"} />
+                <InputGroup.Suffix className="pr-0">
+                  <Button isIconOnly aria-label={isVisible ? "Hide password" : "Show password"} size="sm" variant="ghost" onPress={() => setIsVisible(!isVisible)}>
+                    {isVisible ? <Eye className="size-4" /> : <EyeSlash className="size-4" />}
+                  </Button>
+                </InputGroup.Suffix>
+              </InputGroup>
             </TextField>
             <div className="flex gap-2">
               <Button className="w-full" type="submit">
