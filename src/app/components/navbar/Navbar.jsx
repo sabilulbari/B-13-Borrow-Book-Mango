@@ -28,6 +28,9 @@ const Navbar =  () => {
               <li>
                 <Navlink href={"/allBooks"}>All Books</Navlink>
               </li>
+              <li>
+                <Navlink href={"/myProfile"}>My profile</Navlink>
+              </li>
             </ul>
           </div>
           <Link href={"/"} className="cursor-pointer normal-case text-2xl font-semibold text-white">
@@ -42,6 +45,9 @@ const Navbar =  () => {
             <li>
               <Navlink href={"/allBooks"}>All Books</Navlink>
             </li>
+            {session?.user && <li>
+              <Navlink href={"/myProfile"}>My profile</Navlink>
+            </li>}
           </ul>
         </div>
         <div className="navbar-end gap-4">
@@ -58,7 +64,10 @@ const Navbar =  () => {
           </div>
           {session?.user ? (
             <Link href="/login">
-              <button className="px-8 py-2 cursor-pointer rounded-2xl bg-linear-to-r from-purple-500 to-violet-600 text-white font-semibold text-md shadow-md hover:scale-105 transition" onClick={ async ()=> await authClient.signOut()}>
+              <button
+                className="px-8 py-2 cursor-pointer rounded-2xl bg-linear-to-r from-purple-500 to-violet-600 text-white font-semibold text-md shadow-md hover:scale-105 transition"
+                onClick={async () => await authClient.signOut()}
+              >
                 Logout
               </button>
             </Link>
