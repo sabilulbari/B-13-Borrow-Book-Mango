@@ -5,12 +5,13 @@ import { Button, Description, FieldError, Form, Input, Label, TextField } from "
 import { FaGoogle } from "react-icons/fa6";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
-  const onSubmit = (e) => {
-    e.preventDefault();
-   const email = e.target.email.value;
-   console.log(email);
+    const {register, handleSubmit} = useForm()
+  const onSubmit = (data) => {
+   
+   console.log(data);
   };
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950/80">
@@ -20,21 +21,21 @@ const Register = () => {
           <div className="mb-6 text-center">
             <h1 className="text-3xl font-bold text-white">Register</h1>
           </div>
-          <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
+          <Form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
             {/* Name */}
             <TextField
               isRequired
               name="name"
               type="text"
               validate={(value) => {
-                if (value == '') {
+                if (value == "") {
                   return "Please enter your name";
                 }
                 return null;
               }}
             >
               <Label className="text-white">Name</Label>
-              <Input placeholder="john" className="p-3 " />
+              <Input placeholder="john" className="p-3 " {...register("name")} />
               <FieldError />
             </TextField>
             {/* email */}
@@ -50,7 +51,7 @@ const Register = () => {
               }}
             >
               <Label className="text-white">Email</Label>
-              <Input placeholder="john@example.com" className="p-3 " />
+              <Input placeholder="john@example.com" className="p-3 " {...register("email")} />
               <FieldError />
             </TextField>
             {/* Photo URl */}
@@ -59,14 +60,14 @@ const Register = () => {
               name="image"
               type="text"
               validate={(value) => {
-                if (value == '') {
+                if (value == "") {
                   return "Please enter a you profile picture link";
                 }
                 return null;
               }}
             >
               <Label className="text-white">Profile URL</Label>
-              <Input placeholder="https://img.com" className="p-3 " />
+              <Input placeholder="https://img.com" className="p-3" {...register("photo_url")} />
               <FieldError />
             </TextField>
             {/* Password */}
@@ -89,7 +90,7 @@ const Register = () => {
               }}
             >
               <Label className="text-white">Password</Label>
-              <Input placeholder="Enter your password" className="p-3 " />
+              <Input placeholder="Enter your password" className="p-3 " {...register("password")} />
               <Description className="text-green-600">Must be at least 8 characters with 1 uppercase and 1 number</Description>
               <FieldError />
             </TextField>

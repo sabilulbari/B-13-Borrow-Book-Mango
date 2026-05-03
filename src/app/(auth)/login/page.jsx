@@ -5,17 +5,12 @@ import { Button, Description, FieldError, Form, Input, Label, TextField } from "
 import { FaGoogle } from "react-icons/fa6";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = {};
-    // Convert FormData to plain object
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
-    });
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
   };
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950/80">
@@ -24,9 +19,8 @@ const Register = () => {
         <div className="w-full max-w-md rounded-[32px] border border-white/20 bg-white/10 p-8 shadow-2xl shadow-slate-900/30 backdrop-blur-xl">
           <div className="mb-6 text-center">
             <h1 className="text-3xl font-bold text-white">Login</h1>
-            
           </div>
-          <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
+          <Form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
             <TextField
               isRequired
               name="email"
@@ -39,7 +33,7 @@ const Register = () => {
               }}
             >
               <Label className="text-white">Email</Label>
-              <Input placeholder="john@example.com" className="p-3 " />
+              <Input placeholder="john@example.com" className="p-3 " {...register("email")} />
               <FieldError />
             </TextField>
             <TextField
@@ -61,7 +55,7 @@ const Register = () => {
               }}
             >
               <Label className="text-white">Password</Label>
-              <Input placeholder="Enter your password" className="p-3 " />
+              <Input placeholder="Enter your password" className="p-3 " {...register("password")} />
               <Description className="text-green-600">Must be at least 8 characters with 1 uppercase and 1 number</Description>
               <FieldError />
             </TextField>
