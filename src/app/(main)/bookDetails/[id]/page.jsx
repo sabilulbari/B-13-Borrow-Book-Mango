@@ -1,10 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import { getBookDetails } from "../../../../../lib/data";
-import { toast } from "react-toastify";
 import BorrowButton from "@/app/components/borrowbutton/BorrowButton";
 
-// eslint-disable-next-line @next/next/no-async-client-component
 const BookDetails = async ({ params }) => {
   const { id } = await params;
   const bookById = await getBookDetails(id);
