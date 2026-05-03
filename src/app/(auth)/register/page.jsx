@@ -6,12 +6,19 @@ import { FaGoogle } from "react-icons/fa6";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
+import { authClient } from "../../../../lib/auth-client";
 
 const Register = () => {
     const {register, handleSubmit} = useForm()
-  const onSubmit = (data) => {
-   
-   console.log(data);
+  const onSubmit = async (e) => {
+    const { data, error } = await authClient.signUp.email({
+      name: e.name,
+      email: e.email,
+      image: e.image_url,
+      password: e.password,
+    });
+    console.log(data, error, "register");
+    
   };
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950/80">
@@ -67,7 +74,7 @@ const Register = () => {
               }}
             >
               <Label className="text-white">Profile URL</Label>
-              <Input placeholder="https://img.com" className="p-3" {...register("photo_url")} />
+              <Input placeholder="https://img.com" className="p-3" {...register("image_url")} />
               <FieldError />
             </TextField>
             {/* Password */}

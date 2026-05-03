@@ -6,11 +6,17 @@ import { FaGoogle } from "react-icons/fa6";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
+import { authClient } from "../../../../lib/auth-client";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const {data:res, error} = await authClient.signIn.email({
+        name: data.email,
+        password: data.password,
+        callbackURL:"/"
+    })
+    console.log(res, error, "Login");
   };
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950/80">
