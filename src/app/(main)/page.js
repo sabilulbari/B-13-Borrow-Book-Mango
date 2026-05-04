@@ -8,7 +8,7 @@ export default function Home() {
     <div>
       <Banner></Banner>
       <FeaturedBooks />
-      <DownloadSection/>
+      <DownloadSection />
     </div>
   );
 }

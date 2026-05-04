@@ -16,12 +16,12 @@ const DownloadSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-            <button className="px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-purple-500 to-violet-600 text-white font-semibold text-base sm:text-lg md:text-xl shadow-md hover:scale-105 transition">
-              Sign Up
+            <button className="px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-linear-to-r from-purple-500 to-violet-600 text-white font-semibold text-base sm:text-lg md:text-xl shadow-md hover:scale-105 transition">
+              Register
             </button>
 
             <button className="px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl border border-gray-700 text-gray-800 font-semibold text-base sm:text-lg md:text-xl hover:bg-white transition">
-              Sign In
+              Login
             </button>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import { BooksData } from "@/lib/data";
 import React from "react";
 import Marquee from "react-fast-marquee";
 
@@ -39,12 +40,14 @@ const brackingNews = [
   },
 ];
 
-const HeaderMarque = () => {
+const HeaderMarque = async () => {
+  const bookTitle = await BooksData()
+  console.log(bookTitle);
   return (
-    <div className="flex w-[90%] mx-auto mt-10 px-4 py-4 bg-red-50 ">
-      <button className="btn bg-red-700 text-white font-normal">New Arrivals</button>
-      <Marquee speed={100} pauseOnHover={true}>
-        {brackingNews.map((n) => (
+    <div className="flex w-[90%] mx-auto mt-10 lg:px-4 lg:py-4 bg-red-50 ">
+      <button className="btn p-2 text-[12px] bg-red-700  text-white font-normal">New Arrivals</button>
+      <Marquee speed={100} className="" pauseOnHover={true}>
+        {bookTitle.slice(1, 10).map((n) => (
           <span key={n.id}>
             <strong className="ml-10">{n.category}</strong> : {n.title}
           </span>

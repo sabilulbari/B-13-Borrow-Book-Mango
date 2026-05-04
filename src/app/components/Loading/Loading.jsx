@@ -2,11 +2,12 @@
 import React from "react";
 import { useSpring, animated } from "react-spring";
 
-const Loading = () => {
+const Loading = ({ onComplete }) => {
   const { number } = useSpring({
-    from: { number: 1 },
+    from: { number: 0 },
     to: { number: 100 },
-    config: { duration: 3000 }, // 5 seconds
+    config: { duration: 3000 }, // 3 seconds
+    onRest: onComplete, // Call onComplete when animation finishes
   });
 
   return (
