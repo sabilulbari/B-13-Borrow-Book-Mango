@@ -7,12 +7,13 @@ export async function proxy(request) {
     headers: await headers(),
   });
 
-  if(session){
-    return NextResponse.next()
-}
-  return NextResponse.redirect(new URL("/login", request.url));
+  if (session) {
+    return NextResponse.next();
+  } else {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
 }
 
 export const config = {
-  matcher: ["/allBooks","/myProfile", "/bookDetails/:path*"],
+  matcher: ["/allBooks", "/myProfile", "/bookDetails/:path*"],
 };
