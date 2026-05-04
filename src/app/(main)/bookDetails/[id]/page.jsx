@@ -3,6 +3,11 @@ import React from "react";
 import { getBookDetails } from "../../../../lib/data";
 import BorrowButton from "@/app/components/borrowbutton/BorrowButton";
 
+export const metadata = {
+    title: "Brrow Books || Book details",
+    description: "All books are here",
+  };
+
 const BookDetails = async ({ params }) => {
   const { id } = await params;
   const bookById = await getBookDetails(id);

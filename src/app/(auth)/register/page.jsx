@@ -9,6 +9,7 @@ import { authClient } from "../../../lib/auth-client";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
+
 const Register = () => {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState();

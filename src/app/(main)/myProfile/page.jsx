@@ -4,6 +4,7 @@ import { Button, Input, Label } from "@heroui/react";
 import { authClient } from "../../../lib/auth-client";
 import Image from "next/image";
 
+
 const MyProfile = () => {
   const { data: session, isPending } = authClient.useSession();
   const [name, setName] = useState("");

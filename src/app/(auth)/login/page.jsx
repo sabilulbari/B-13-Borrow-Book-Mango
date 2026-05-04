@@ -8,6 +8,8 @@ import { useForm } from "react-hook-form";
 import { authClient } from "../../../lib/auth-client";
 import { toast } from "react-toastify";
 
+
+
 const Register = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -35,6 +37,7 @@ const Register = () => {
       toast.success("Successfuly login user");
     }
   };
+
   return (
     <div className="relative lg:min-h-screen overflow-hidden bg-slate-950/80">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.18),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.14),transparent_30%)]" />
