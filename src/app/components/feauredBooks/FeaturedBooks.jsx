@@ -13,9 +13,9 @@ const FeaturedBooks = async () => {
         <div></div>
         <h2 className="text-center text-gray-600 text-4xl font-medium">Featured Books</h2>
         <div className="">
-          <div className="flex gap-4">
-            {[...Books.slice(1, 5), ...Books.slice(1, 5)].map((book, index) => (
-              <div key={`${book.id}-${index}`} className="min-w-[5%] sm:min-w-[45%] lg:min-w-[25%] shrink-0">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {Books.slice(1, 5).map((book, index) => (
+              <div key={index}>
                 <Book book={book} />
               </div>
             ))}
