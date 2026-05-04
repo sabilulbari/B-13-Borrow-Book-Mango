@@ -28,6 +28,13 @@ const Register = () => {
       router.push("/login");
     }
   };
+
+  const handleGoogleSignin = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950/80">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.18),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.14),transparent_30%)]" />
@@ -50,7 +57,7 @@ const Register = () => {
               }}
             >
               <Label className="text-white">Name</Label>
-              <Input placeholder="john" className="p-3 " {...register("name")} />
+              <Input placeholder="john" className="p-3 w-full " {...register("name")} />
               <FieldError />
             </TextField>
             {/* email */}
@@ -66,7 +73,7 @@ const Register = () => {
               }}
             >
               <Label className="text-white">Email</Label>
-              <Input placeholder="john@example.com" className="p-3 " {...register("email")} />
+              <Input placeholder="john@example.com" className="p-3 w-full " {...register("email")} />
               <FieldError />
             </TextField>
             {/* Photo URl */}
@@ -82,7 +89,7 @@ const Register = () => {
               }}
             >
               <Label className="text-white">Profile URL</Label>
-              <Input placeholder="https://img.com" className="p-3" {...register("image_url")} />
+              <Input placeholder="https://img.com" className="p-3 w-full " {...register("image_url")} />
               <FieldError />
             </TextField>
             {/* Password */}
@@ -126,19 +133,21 @@ const Register = () => {
                 Register
               </Button>
             </div>
-            <div className="mt-4 space-y-2">
-              <h2 className="text-white/70 font-medium text-xl">Continue With</h2>
-              <div className="flex items-center space-x-2 justify-center text-lg font-medium border border-blue-200 bg-blue-50 p-2 btn">
-                <FcGoogle className="text-2xl" /> <p>Login with google</p>
-              </div>
-            </div>
-            <div className="flex">
-              <p className="text-white">Already you have account?</p>{" "}
-              <Link className=" border-b text-red-500 ml-2 hover:border-red-500" href={"/login"}>
-                Login
-              </Link>
-            </div>
           </Form>
+          <div className="mt-4 space-y-2">
+            <h2 className="text-white/70 font-medium text-xl">Continue With</h2>
+            <div>
+              <button className="flex items-center space-x-2 justify-center text-lg font-medium border border-blue-200 bg-blue-50 p-2 btn w-full" onClick={handleGoogleSignin}>
+                <FcGoogle className="text-2xl" /> <p>Login with google</p>
+              </button>
+            </div>
+          </div>
+          <div className="flex mt-2">
+            <p className="text-white">Already you have account?</p>{" "}
+            <Link className=" border-b text-red-500 ml-2 hover:border-red-500" href={"/login"}>
+              Login
+            </Link>
+          </div>
         </div>
       </div>
     </div>

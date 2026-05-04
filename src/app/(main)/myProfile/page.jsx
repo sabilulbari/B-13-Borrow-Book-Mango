@@ -67,7 +67,9 @@ const MyProfile = () => {
       <div className="max-w-md mx-auto bg-white/10 backdrop-blur-xl rounded-[32px] border border-white/20 p-8 shadow-2xl">
         {/* Profile Picture */}
         <div className="flex justify-center mb-6">
-          <Image width={200} height={200}
+          <Image
+            width={200}
+            height={200}
             src={session.user.image || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKaiKiPcLJj7ufrj6M2KaPwyCT4lDSFA5oog&s"}
             alt="Profile"
             className="w-32 h-32 rounded-full object-cover border-4 border-white/20"
