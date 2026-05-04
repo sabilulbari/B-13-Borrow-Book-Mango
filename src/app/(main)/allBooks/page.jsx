@@ -1,6 +1,6 @@
-'use client'
+"use client";
 import React, { useState, useEffect } from "react";
-import { BooksData } from "../../../../lib/data";
+import { BooksData } from "../../../lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import { Label, SearchField } from "@heroui/react";
@@ -8,9 +8,9 @@ import Leftside from "@/app/components/allbookLeftSide/Leftside";
 
 const AllBooks = () => {
   const [allBook, setAllBook] = useState([]);
-  const [search, setSearch] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
-  
+  const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   useEffect(() => {
     BooksData().then(setAllBook);
   }, []);
@@ -27,11 +27,11 @@ const AllBooks = () => {
           </SearchField.Group>
         </SearchField>
       </div>
-      <div className="grid grid-cols-10 gap-5">
-        <div className="col-span-3">
+      <div className="grid  lg:grid-cols-10 gap-5">
+        <div className="lg:col-span-3">
           <Leftside selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory}></Leftside>
         </div>
-        <div className="grid col-span-7 grid-cols-3 gap-5">
+        <div className="grid lg:col-span-7 lg:grid-cols-3 gap-5">
           {allBook
             .filter((b) => b.title.toLowerCase().includes(search.toLowerCase()))
             .filter((b) => selectedCategory === "" || b.category === selectedCategory)

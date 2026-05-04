@@ -16,7 +16,10 @@ const Footer = () => {
               </Link>
             </div>
 
-            <p className="text-zinc-400 text-lg max-w-md">Premium digital tools for creators, professionals, and businesses. Work smarter with our suite of powerful tools.</p>
+            <p className="text-zinc-400 text-lg max-w-md">
+              A modern digital library that brings the timeless joy of books into a seamless online experience. Discover, filter, and borrow from a rich collection with ease and
+              speed.
+            </p>
           </div>
 
           {/* Quick Links */}

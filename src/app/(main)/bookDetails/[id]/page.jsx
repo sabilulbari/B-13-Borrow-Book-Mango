@@ -1,12 +1,13 @@
 import Image from "next/image";
 import React from "react";
-import { getBookDetails } from "../../../../../lib/data";
+import { getBookDetails } from "../../../../lib/data";
 import BorrowButton from "@/app/components/borrowbutton/BorrowButton";
 
 const BookDetails = async ({ params }) => {
   const { id } = await params;
   const bookById = await getBookDetails(id);
   const { yearOfPublishing, totalPages, title, rating, publisher, image_url, description, category, available_quantity, author } = bookById;
+  console.log(image_url, "image url ");
   return (
     <div className=" grid grid-cols-2 md:grid-cols-10  bg-base-100 w-[90%] mx-auto mt-8 work-sans">
       <div className=" flex items-center col-span-2 justify-center md:col-span-4 p-6 bg-base-200 rounded-xl">

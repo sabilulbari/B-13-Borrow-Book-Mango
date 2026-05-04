@@ -1,10 +1,10 @@
 export const BooksData = async () => {
-  const res = await fetch(`http://localhost:8000/books`);
+  const res = await fetch(`https://books-json-server-xde5.onrender.com/books`);
   const data = await res.json();
   return data;
 };
 export const getBookDetails = async (id) => {
-  const res = await fetch(`http://localhost:8000/books/${id}`,{cache: "no-store"});
+  const res = await fetch(`https://books-json-server-xde5.onrender.com/books/${id}`, { cache: "no-store" });
   const data = await res.json();
   return data;
 };

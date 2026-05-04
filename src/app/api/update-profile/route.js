@@ -1,4 +1,4 @@
-import { auth } from "../../../../lib/auth";
+import { auth } from "../../../lib/auth";
 import { MongoClient, ObjectId } from "mongodb";
 
 const client = new MongoClient(process.env.MONGO_URI);

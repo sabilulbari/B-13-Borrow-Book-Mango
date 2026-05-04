@@ -4,7 +4,7 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <section className="relative overflow-hidden bg-linear-to-r from-slate-950 via-violet-900 to-indigo-700 text-white py-20 shadow-2xl shadow-slate-900/30">
+    <section className="relative overflow-hidden -z-50 bg-linear-to-r from-slate-950 via-violet-900 to-indigo-700 text-white py-20 shadow-2xl shadow-slate-900/30">
       <div className="absolute inset-0 bg-slate-950/20" />
       <div className="relative w-[90%] mx-auto grid gap-12 lg:grid-cols-2 items-center">
         <div className="space-y-8">

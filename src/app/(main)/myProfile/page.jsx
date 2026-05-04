@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Button, Input, Label } from "@heroui/react";
-import { authClient } from "../../../../lib/auth-client";
+import { authClient } from "../../../lib/auth-client";
 import Image from "next/image";
 
 const MyProfile = () => {
@@ -63,7 +63,7 @@ const MyProfile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950/80 py-10 px-4">
+    <div className="lg:min-h-screen bg-slate-950/80 py-10 px-4">
       <div className="max-w-md mx-auto bg-white/10 backdrop-blur-xl rounded-[32px] border border-white/20 p-8 shadow-2xl">
         {/* Profile Picture */}
         <div className="flex justify-center mb-6">

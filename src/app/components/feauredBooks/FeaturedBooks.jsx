@@ -1,5 +1,5 @@
 import React from "react";
-import { BooksData } from "../../../../lib/data";
+import { BooksData } from "../../../lib/data";
 import HeaderMarque from "../marque/HeaderMarque";
 import Book from "./Book";
 

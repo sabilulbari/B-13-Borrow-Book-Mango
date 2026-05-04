@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const Book = ({ book }) => {
-  const { image_url, title, category, author, id } = book;
+  const { image_url, title, id } = book;
   return (
     <div>
       <div className="card h-full flex flex-col backdrop-blur-xl shadow-xl shadow-slate-900/20 border border-black/5 rounded-2xl hover:scale-102 transition-transform duration-300">
